@@ -14,6 +14,8 @@ class App extends Component {
             <div className="mx-5">
                 <Row>
                     <NavBar/>
+                </Row>
+                <Row>
                     <WelcomeMessage/>
                 </Row>
                 <Row className="mainContent">
