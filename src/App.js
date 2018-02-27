@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import './App.css';
 import NavBar from './components/navbar/NavBar';
+import WelcomeMessage from './components/Notifications/WelcomeMassage';
 
 
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
@@ -13,6 +14,7 @@ class App extends Component {
             <div className="mx-5">
                 <Row>
                     <NavBar/>
+                    <WelcomeMessage/>
                 </Row>
                 <Row className="mainContent">
                     <Col xs="0" md="3" lg="2" className="contentSelection ">
