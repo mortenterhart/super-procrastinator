@@ -1,0 +1,11 @@
+.mainContent {
+    height: 800px;
+}
+
+.contentSelection {
+    background-color: aqua;
+}
+
+.contentView {
+    background-color: aquamarine;
+}
