@@ -11,6 +11,7 @@ import {
     DropdownMenu,
     DropdownItem
 } from 'reactstrap';
+import Login from './Login';
 
 class NavBar extends Component {
 
@@ -42,6 +43,7 @@ class NavBar extends Component {
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
+                    <Login/>
                 </Navbar>
             </div>
         );
