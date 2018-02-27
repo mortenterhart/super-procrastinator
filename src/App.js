@@ -12,9 +12,7 @@ class App extends Component {
     render() {
         return (
             <div className="mx-5">
-                <Row>
-                    <NavBar/>
-                </Row>
+                <NavBar/>
                 <Row>
                     <WelcomeMessage/>
                 </Row>
