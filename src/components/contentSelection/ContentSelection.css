@@ -1,0 +1,15 @@
+.ContentSelection {
+    padding: 4%;
+}
+
+.ContentSelection li {
+    list-style-type: none;
+}
+
+h3 {
+    font-weight: 200 !important;
+}
+
+li {
+    padding-bottom: 0.75rem;
+}
