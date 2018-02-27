@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Row, Col} from 'reactstrap';
+import {Row, Col} from 'reactstrap';
 import './App.css';
 import NavBar from './components/navbar/NavBar';
 import WelcomeMessage from './components/Notifications/WelcomeMassage';
@@ -17,7 +17,7 @@ class App extends Component {
                     <WelcomeMessage/>
                 </Row>
                 <Row className="mainContent">
-                    <Col xs="0" md="3" lg="2" className="contentSelection ">
+                    <Col xs="0" md="3" lg="2" className="contentSelection">
                     </Col>
                     <Col md="9" lg="10" className="contentView">
                     </Col>
