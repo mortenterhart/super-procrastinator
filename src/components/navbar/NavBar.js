@@ -6,11 +6,7 @@ import {
     Nav,
     Collapse,
     NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem
+    NavLink
 } from 'reactstrap';
 import Login from './Login';
 

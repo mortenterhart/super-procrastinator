@@ -16,7 +16,6 @@ class WelcomeMessage extends React.Component {
     render() {
         return (
             <div>
-
                 <Jumbotron fluid>
                     <Container fluid>
                         <h1 className="display-3">Hello, my friend!</h1>
