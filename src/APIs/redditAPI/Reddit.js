@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import { render } from "react-dom";
 import { createStore, compose, applyMiddleware } from "redux";
 import ReduxThunk from "redux-thunk";
 import { Provider } from "react-redux";

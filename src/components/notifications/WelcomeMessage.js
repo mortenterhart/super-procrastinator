@@ -13,11 +13,10 @@ class Message extends Component {
         this.setState({showReply: false})
     }
 
-
     render() {
         return (
             <div>
-                <button type="button" className="close" aria-label="Close" onClick={this.onClick.bind(this)&& < Message/> } href="#">
+                <button type="button" className="close" aria-label="Close" onClick={this.onClick.bind(this)&& < Message/> }>
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <Jumbotron fluid>
@@ -50,7 +49,7 @@ class WelcomeMessage extends React.Component {
     render() {
         return (
             <div>
-                <a onClick={this.onClick.bind(this)} href='#'>Help</a>
+                <Button onClick={this.onClick.bind(this)}>Help</Button>
                 {this.state.showReply && < Message/>}
             </div>
         )
