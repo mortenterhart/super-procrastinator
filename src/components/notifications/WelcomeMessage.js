@@ -1,5 +1,5 @@
 import React from 'react';
-import {Jumbotron, Button, Container} from 'reactstrap';
+import {Jumbotron, Container} from 'reactstrap';
 
 
 class WelcomeMessage extends React.Component {
