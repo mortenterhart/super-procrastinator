@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap';
 import './App.css';
 import NavBar from './components/navbar/NavBar';
-import WelcomeMessage from './components/Notifications/WelcomeMassage';
+import WelcomeMessage from './components/Notifications/WelcomeMessage';
 
 
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
