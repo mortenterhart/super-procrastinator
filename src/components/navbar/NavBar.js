@@ -42,23 +42,12 @@ class NavBar extends Component {
                             <NavItem>
                                 <NavLink href="https://github.com/MSkrzypietz/super-procrastinator">Github</NavLink>
                             </NavItem>
-                            <UncontrolledDropdown nav inNavbar>
-                                <DropdownToggle nav caret>
-                                    Options
-                                </DropdownToggle>
-                                <DropdownMenu>
-                                    <DropdownItem>
-                                        Settings
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        Login
-                                    </DropdownItem>
-                                    <DropdownItem divider/>
-                                    <DropdownItem>
-                                        Reset
-                                    </DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
+                            <NavItem>
+                                <NavLink href="https://github.com/MSkrzypietz/super-procrastinator">Settings</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="https://github.com/MSkrzypietz/super-procrastinator">Subscriptions</NavLink>
+                            </NavItem>
                         </Nav>
                         <Login/>
                     </Collapse>

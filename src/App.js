@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap';
 import './App.css';
 import NavBar from './components/navbar/NavBar';
+
 import ContentSelection from './components/contentSelection/ContentSelection';
-import WelcomeMessage from './components/notifications/WelcomeMassage';
+import WelcomeMessage from './components/notifications/WelcomeMessage';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import Footer from './components/footer/Footer';
+
+import Reddit from './APIs/redditAPI/Reddit';
 
 class App extends Component {
     render() {
@@ -21,6 +24,7 @@ class App extends Component {
                         <ContentSelection/>
                     </Col>
                     <Col md="9" lg="10" className="contentView">
+                        <Reddit/>
                     </Col>
                 </Row>
                 <Row>
