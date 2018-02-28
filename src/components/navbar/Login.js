@@ -20,7 +20,7 @@ class Login extends React.Component {
                              scope="profile"
                              fetchBasicProfile={false}
                              responseHandler={this.responseGoogle}
-                             buttonText="Login With Google"/>
+                             buttonText="Login With Google" />
             </div>
         );
     }
