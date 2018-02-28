@@ -1,0 +1,7 @@
+export const SELECT_TOPIC = "SELECT_TOPIC";
+
+export const REQUEST_POSTS = "REQUEST_POSTS";
+
+export const RECEIVE_POSTS = "RECEIVE_POSTS";
+
+export const INVALIDATE_TOPIC = "INVALIDATE_TOPIC";
