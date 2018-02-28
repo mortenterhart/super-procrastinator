@@ -13,13 +13,17 @@ import Reddit from './APIs/redditAPI/Reddit';
 class App extends Component {
     render() {
         return (
-            <div className="mx-5">
+            <div>
                 <NavBar/>
-               <SubscriptionOptions/>
 
-                <Row>
-                    <Footer/>
-                </Row>
+
+                <div className="mx-5">
+
+                    <SubscriptionOptions/>
+                    <Row>
+                        <Footer/>
+                    </Row>
+                </div>
             </div>
         );
     }
