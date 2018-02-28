@@ -29,11 +29,14 @@ class NavBar extends Component {
         });
     }
 
+
+
     render() {
+
         return (
             <div>
                 <Navbar color="faded" light expand="md">
-                    <Link class="navbar-brand" to="/home">
+                    <Link class="navbar-brand" to="/super-procrastinator/home">
                         SuperProcrastinator
                     </Link>
                     <NavbarToggler onClick={this.toggle}/>
@@ -43,10 +46,10 @@ class NavBar extends Component {
                                 <NavLink href="https://github.com/MSkrzypietz/super-procrastinator">Github</NavLink>
                             </NavItem>
                             <NavItem>
-                                <Link class="nav-link" to="/settings">Settings</Link>
+                                <Link class="nav-link" to="/super-procrastinator/settings">Settings</Link>
                             </NavItem>
                             <NavItem>
-                                <Link class="nav-link" to="/subscriptions">Subscriptions</Link>
+                                <Link class="nav-link" to="/super-procrastinator/subscription">Subscriptions</Link>
                             </NavItem>
                         </Nav>
                         <Login/>

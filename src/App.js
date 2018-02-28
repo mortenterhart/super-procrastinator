@@ -30,10 +30,10 @@ class App extends Component {
             <Provider store={store}>
                 <div className="mx-5">
                     <NavBar/>
-                    <Redirect from="/" to="/home"/>
-                    <Route path="/home" component={MainContent}/>
-                    <Route path="/settings" component={Settings}/>
-                    <Route path="/subscriptions" component={SubscriptionOptions}/>
+                    <Redirect from="/" to="/super-procrastinator/home"/>
+                    <Route path="/super-procrastinator/home" component={MainContent}/>
+                    <Route path="/super-procrastinator/settings" component={Settings}/>
+                    <Route path="/super-procrastinator/subscription" component={SubscriptionOptions}/>
                     <Row>
                         <Footer/>
                     </Row>
