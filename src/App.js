@@ -8,6 +8,7 @@ import WelcomeMessage from './components/notifications/WelcomeMessage';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import Footer from './components/footer/Footer';
+import SubscriptionOptions from "./components/subscriptionPage/SubscriptionOptions";
 
 import Reddit from './APIs/redditAPI/Reddit';
 
@@ -24,9 +25,9 @@ class App extends Component {
                         <ContentSelection/>
                     </Col>
                     <Col md="9" lg="10" className="contentView">
-                        <Reddit/>
                     </Col>
                 </Row>
+                <SubscriptionOptions/>
                 <Row>
                     <Footer/>
                 </Row>
