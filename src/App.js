@@ -14,7 +14,6 @@ import { createStore, compose, applyMiddleware } from "redux";
 import ReduxThunk from "redux-thunk";
 import { Provider } from "react-redux";
 
-import Reddit from './APIs/redditAPI/Reddit';
 import rootReducer from "./APIs/redditAPI/reducers/rootReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
