@@ -9,7 +9,6 @@ import SubscriptionOptions from "./components/subscriptionPage/SubscriptionOptio
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import Footer from './components/footer/Footer';
 
-
 import ReduxThunk from "redux-thunk";
 import {applyMiddleware, compose, createStore} from "redux";
 
@@ -27,15 +26,24 @@ const store = createStore(
 
 class App extends Component {
 
+    constructor() {
+        super();
+        this.contextPath = this.extractContextPath()
+    }
+
+    extractContextPath() {
+        return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+    }
+
     render() {
         return (
             <Provider store={store}>
                 <div className="mx-5">
                     <NavBar/>
                     <Redirect from="/" to="/home"/>
-                    <Route path="/home" component={MainContent}/>
-                    <Route path="/settings" component={Settings}/>
-                    <Route path="/subscriptions" component={SubscriptionOptions}/>
+                    <Route path={this.contextPath + "/home"} component={MainContent}/>
+                    <Route path={this.contextPath + "/settings"} component={Settings}/>
+                    <Route path={this.contextPath + "/subscriptions"} component={SubscriptionOptions}/>
                     <Row>
                         <Footer/>
                     </Row>

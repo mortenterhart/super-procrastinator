@@ -32,7 +32,7 @@ class NavBar extends Component {
         return (
             <div>
                 <Navbar color="faded" light expand="md">
-                    <Link class="navbar-brand" to="/home">
+                    <Link className="navbar-brand" to="/home">
                         SuperProcrastinator
                     </Link>
                     <NavbarToggler onClick={this.toggle}/>
