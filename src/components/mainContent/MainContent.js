@@ -9,7 +9,7 @@ import {Row, Col} from 'reactstrap';
 class MainContent extends Component {
     render() {
         return (
-            <Row className="mainContent mb-5">
+            <Row className="mainContent">
                 <Col xs="0" md="3" lg="2" className="contentSelection">
                     <ContentSelection/>
                 </Col>
