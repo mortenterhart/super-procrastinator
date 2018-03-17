@@ -1,4 +1,10 @@
-import { createStore, compose, applyMiddleware } from 'redux';
+import {createStore} from 'redux';
+import {updateCheckboxState} from './CheckboxStateReducer';
 
+let storage = createStore(updateCheckboxState);
 
-export let store = createStore();
+storage.subscribe(() =>
+    console.log("State in storage changed!")
+);
+
+export {storage};

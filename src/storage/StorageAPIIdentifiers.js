@@ -1,4 +1,7 @@
-export const checkboxNames = {
+const checkboxNames = {
     reddit: 'reddit',
-    twitter: 'twitter'
+    twitter: 'twitter',
+    facebook: 'facebook'
 };
+
+export {checkboxNames};

@@ -1,24 +1,27 @@
 
-const checkboxActions = {
-    selectCheckbox: 'SELECT_CHECKBOX',
-    unselectCheckbox: 'UNSELECT_CHECKBOX'
-};
+class CheckboxActions {
 
-export function selectCheckbox(identifier) {
-    return {
-        type: checkboxActions.selectCheckbox,
-        identifier: identifier,
-        isAuthenticated: false,
-        selected: true
+    static checkboxActions = {
+        selectCheckbox: 'SELECT_CHECKBOX',
+        deselectCheckbox: 'DESELECT_CHECKBOX'
     };
+
+    static selectCheckbox(identifier) {
+        //console.log("Action " + this.checkboxActions.selectCheckbox + " was triggered");
+        return {
+            type: this.checkboxActions.selectCheckbox,
+            identifier: identifier
+        };
+    }
+
+    static deselectCheckbox(identifier) {
+        //console.log("Action " + this.checkboxActions.deselectCheckbox + " was triggered");
+        return {
+            type: this.checkboxActions.deselectCheckbox,
+            identifier: identifier
+        };
+    }
 }
 
-export function unselectCheckbox(identifier) {
-    return {
-        type: checkboxActions.unselectCheckbox,
-        identifier: identifier,
-        isAuthenticated: false,
-        selected: false
-    };
-}
+export {CheckboxActions};
 

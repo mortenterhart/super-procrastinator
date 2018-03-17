@@ -1,8 +1,30 @@
 import React, {Component} from 'react';
-import {Container, Row, Form, FormGroup, Label, Input} from 'reactstrap';
+import {Container, Form, Label, Row} from 'reactstrap';
 import './ContentSelection.css';
+import {checkboxNames} from "../../storage/StorageAPIIdentifiers";
+import Checkbox from "./Checkbox";
+import {storage} from "../../storage/ReduxStorage";
 
 class ContentSelection extends Component {
+
+    constructor() {
+        super();
+        this.checkboxList = [
+            <Checkbox key={checkboxNames.reddit} identifier={checkboxNames.reddit} labelName="Reddit" checked={false}/>,
+            <Checkbox key={checkboxNames.facebook} identifier={checkboxNames.facebook} labelName="Facebook" checked={false}/>,
+            <Checkbox key={checkboxNames.twitter} identifier={checkboxNames.twitter} labelName="Twitter" checked={false}/>
+        ];
+
+        console.log("ContentSelection checkboxList:");
+        console.log(this.checkboxList);
+        storage.dispatch({
+            type: 'INIT',
+            checkboxList: this.checkboxList
+        });
+        console.log("ContentSelection initialState:");
+        console.log(storage.getState());
+    }
+
     render() {
         return (
             <Container className="ContentSelection">
@@ -14,32 +36,7 @@ class ContentSelection extends Component {
                 <Row>
                     <Form>
                         <ul className="list-group">
-                            <li>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input type="checkbox"/>{' '}
-                                        Reddit
-                                    </Label>
-                                </FormGroup>
-                            </li>
-
-                            <li>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input type="checkbox"/>{' '}
-                                        Twitter
-                                    </Label>
-                                </FormGroup>
-                            </li>
-
-                            <li>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input type="checkbox"/>{' '}
-                                        Facebook
-                                    </Label>
-                                </FormGroup>
-                            </li>
+                            {this.checkboxList}
                         </ul>
                     </Form>
                 </Row>
