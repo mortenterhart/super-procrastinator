@@ -1,30 +1,49 @@
-import React from 'react';
-import {GoogleLogin} from 'react-google-login-component';
+import React, {Component} from 'react';
+import {Button} from 'reactstrap';
 
-class Login extends React.Component {
+class Login extends Component {
 
-    responseGoogle(googleUser) {
+    onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
-        var googleId = googleUser.getId();
+        console.log("ID Token: " + id_token);
+    }
 
-        console.log({googleId});
-        console.log({accessToken: id_token});
-        //anything else you want to do(save to localStorage)...
+    signOut() {
+        var auth2 = window.gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            console.log('User signed out.');
+        });
+    }
+
+    componentDidMount() {
+        window.gapi.signin2.render('g-signin2', {
+            'scope': 'https://www.googleapis.com/auth/plus.login',
+            'width': 250,
+            'height': 50,
+            'longtitle': true,
+            'theme': 'dark',
+            'onsuccess': this.onSignIn
+        });
     }
 
     render() {
         return (
             <div>
-                <GoogleLogin socialId="340186055169-0fe4bvqh1ce7i4q2fetr0parcv9odkvq.apps.googleusercontent.com"
-                             className="google-login"
-                             scope="profile"
-                             fetchBasicProfile={false}
-                             responseHandler={this.responseGoogle}
-                             buttonText="Login With Google" />
+                <div id="g-signin2"/>
+                <Button onClick={this.signOut}>Sign Out</Button>
             </div>
         );
     }
-
 }
 
 export default Login;

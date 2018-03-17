@@ -14,7 +14,7 @@ class TopicSelector extends Component {
   constructor(props) {
     super(props);
 
-    this.options = ["jquery", "reactjs", "vuejs", "javascript"];
+    this.options = ["dankmemes"];
 
     this.state = {
       selected: this.options[0]

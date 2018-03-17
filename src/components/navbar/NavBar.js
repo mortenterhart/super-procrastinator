@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
+
 import {
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
     Collapse,
     NavItem,
     NavLink
 } from 'reactstrap';
+import Link from "react-router-dom/es/Link";
 import Login from './Login';
 
 class NavBar extends Component {
@@ -31,7 +32,9 @@ class NavBar extends Component {
         return (
             <div>
                 <Navbar color="faded" light expand="md">
-                    <NavbarBrand href="/">SuperProcrastinator</NavbarBrand>
+                    <Link class="navbar-brand" to="/home">
+                        SuperProcrastinator
+                    </Link>
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
@@ -39,13 +42,15 @@ class NavBar extends Component {
                                 <NavLink href="https://github.com/MSkrzypietz/super-procrastinator">Github</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="https://github.com/MSkrzypietz/super-procrastinator">Settings</NavLink>
+                                <Link class="nav-link" to="/settings">Settings</Link>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="https://github.com/MSkrzypietz/super-procrastinator">Subscriptions</NavLink>
+                                <Link class="nav-link" to="/subscriptions">Subscriptions</Link>
+                            </NavItem>
+                            <NavItem>
+                                <Login />
                             </NavItem>
                         </Nav>
-                        <Login/>
                     </Collapse>
                 </Navbar>
             </div>
