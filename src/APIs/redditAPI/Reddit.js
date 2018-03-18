@@ -5,7 +5,7 @@ import App from "./Root";
 class Reddit extends Component {
     render() {
         return (
-                <App />
+            <App />
         );
     }
 }
