@@ -8,4 +8,5 @@
 
 .contentView {
     background-color: #26de81;
+    overflow-y: scroll;
 }
