@@ -1,7 +1,6 @@
 const checkboxNames = {
     reddit: 'reddit',
-    twitter: 'twitter',
-    facebook: 'facebook'
+    golem: 'golem'
 };
 
 export {checkboxNames};
