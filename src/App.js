@@ -1,31 +1,32 @@
 import React, {Component} from 'react';
 import './App.css';
 import NavBar from './components/navbar/NavBar';
-
 import MainContent from './components/mainContent/MainContent';
 
 import Footer from './components/footer/Footer';
 
-import {createStore, compose, applyMiddleware} from "redux";
-import ReduxThunk from "redux-thunk";
-import {Provider} from "react-redux";
+import {Provider} from 'react-redux';
+import {storage} from "./storage/ReduxStorage";
 
-import rootReducer from "./APIs/redditAPI/reducers/rootReducer";
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-    rootReducer,
-    composeEnhancers(applyMiddleware(ReduxThunk))
-);
 
 class App extends Component {
+
+    constructor() {
+        super();
+        this.contextPath = this.extractContextPath();
+    }
+
+    extractContextPath() {
+        return window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2));
+    }
+
     render() {
         return (
-            <Provider store={store}>
+            <Provider store={storage}>
                 <div>
                     <NavBar/>
-                    <MainContent/>                    
-                    <Footer/>            
+                    <MainContent/>
+                    <Footer/>
                 </div>
             </Provider>
         );
