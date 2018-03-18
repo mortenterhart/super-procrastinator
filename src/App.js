@@ -9,26 +9,17 @@ import SubscriptionOptions from "./components/subscriptionPage/SubscriptionOptio
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import Footer from './components/footer/Footer';
 
-import ReduxThunk from "redux-thunk";
-import {applyMiddleware, compose, createStore} from "redux";
-
-import rootReducer from "./APIs/redditAPI/reducers/rootReducer";
 import {Provider} from 'react-redux';
 
 import Route from "react-router-dom/es/Route";
 import Redirect from "react-router-dom/es/Redirect";
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-    rootReducer,
-    composeEnhancers(applyMiddleware(ReduxThunk))
-);
+import {storage} from "./storage/ReduxStorage";
 
 class App extends Component {
 
     constructor() {
         super();
-        this.contextPath = this.extractContextPath()
+        this.contextPath = this.extractContextPath();
     }
 
     extractContextPath() {
@@ -37,7 +28,7 @@ class App extends Component {
 
     render() {
         return (
-            <Provider store={store}>
+            <Provider store={storage}>
                 <div className="mx-5">
                     <NavBar/>
                     <Redirect from="/" to="/home"/>

@@ -1,28 +1,22 @@
 import React, {Component} from 'react';
 import {Container, Form, Label, Row} from 'reactstrap';
 import './ContentSelection.css';
-import {checkboxNames} from "../../storage/StorageAPIIdentifiers";
+import {checkboxNames} from "../../storage/apis/StorageAPIIdentifiers";
 import Checkbox from "./Checkbox";
 import {storage} from "../../storage/ReduxStorage";
+import {CheckboxActions} from "../../storage/actions/CheckboxActions";
 
 class ContentSelection extends Component {
 
     constructor() {
         super();
         this.checkboxList = [
-            <Checkbox key={checkboxNames.reddit} identifier={checkboxNames.reddit} labelName="Reddit" checked={false}/>,
-            <Checkbox key={checkboxNames.facebook} identifier={checkboxNames.facebook} labelName="Facebook" checked={false}/>,
-            <Checkbox key={checkboxNames.twitter} identifier={checkboxNames.twitter} labelName="Twitter" checked={false}/>
+            new Checkbox(checkboxNames.reddit, "Reddit", false),
+            new Checkbox(checkboxNames.facebook, "Facebook", false),
+            new Checkbox(checkboxNames.twitter, "Twitter", false)
         ];
 
-        console.log("ContentSelection checkboxList:");
-        console.log(this.checkboxList);
-        storage.dispatch({
-            type: 'INIT',
-            checkboxList: this.checkboxList
-        });
-        console.log("ContentSelection initialState:");
-        console.log(storage.getState());
+        storage.dispatch(CheckboxActions.initCheckboxList(this.checkboxList));
     }
 
     render() {
@@ -36,7 +30,9 @@ class ContentSelection extends Component {
                 <Row>
                     <Form>
                         <ul className="list-group">
-                            {this.checkboxList}
+                            {this.checkboxList.map(checkbox => {
+                                return (<li>{checkbox.render()}</li>);
+                            })}
                         </ul>
                     </Form>
                 </Row>
