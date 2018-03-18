@@ -8,6 +8,8 @@
 
 .ContentSelection h4 {
     font-weight: 400;
+    text-align: center;
+    width: 100%;
 }
 
 li {
