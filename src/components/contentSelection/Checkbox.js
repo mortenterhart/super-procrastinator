@@ -13,15 +13,12 @@ class Checkbox extends Component {
         this.identifier = props.identifier;
         this.labelName = props.labelName;
         this.checked = props.checked;
-        this.setChecked = function(checked) {
-            this.checked = checked;
-        };
 
         this.updateCheckboxState = this.updateCheckboxState.bind(this);
     }
 
     updateCheckboxState() {
-        if (this.checked) {
+        if (this.props.checked) {
             storage.dispatch(CheckboxActions.deselectCheckbox(this.identifier));
         } else {
             storage.dispatch(CheckboxActions.selectCheckbox(this.identifier));
@@ -49,20 +46,18 @@ Checkbox.propTypes = {
 
 let getCheckboxIndexByIdentifier = (checkboxList, identifier) => {
     let index = 0;
-    for (const checkbox of checkboxList) {
+    while (checkboxList[index] !== undefined) {
+        const checkbox = checkboxList[index];
         if (checkbox.props.identifier === identifier) {
             return index;
         }
         index++;
     }
+
     return -1;
 };
 
 let mapStateToProps = (state, props) => {
-    console.log("mapStateToProps state:");
-    console.log(state);
-    console.log("mapStateToProps props:");
-    console.log(props);
     const checkboxIndex = getCheckboxIndexByIdentifier(state.checkboxList.checkboxList, props.identifier);
 
     if (checkboxIndex >= 0) {
