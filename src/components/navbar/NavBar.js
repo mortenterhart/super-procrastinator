@@ -4,12 +4,22 @@ import {
     Navbar,
     NavbarToggler,
     Nav,
-    Collapse,
-    NavItem,
-    NavLink
+    Collapse
 } from 'reactstrap';
-import Link from "react-router-dom/es/Link";
-import Login from './Login';
+
+import firebase from 'firebase';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
+const config = {
+    apiKey: "AIzaSyDew41OBlxbC6VB8WOgA-d6mDlyJx-mh_E",
+    authDomain: "superprocrastinator-d826b.firebaseapp.com",
+    databaseURL: "https://superprocrastinator-d826b.firebaseio.com",
+    projectId: "superprocrastinator-d826b",
+    storageBucket: "superprocrastinator-d826b.appspot.com",
+    messagingSenderId: "340186055169"
+  };
+  
+firebase.initializeApp(config);
 
 class NavBar extends Component {
 
@@ -28,33 +38,56 @@ class NavBar extends Component {
         });
     }
 
+    // The component's Local state.
+    state = {
+        signedIn: false // Local signed-in state.
+    };
+
+    // Configure FirebaseUI.
+    uiConfig = {
+        // Popup signin flow rather than redirect flow.
+        signInFlow: 'popup',
+        // We will display Google as auth providers.
+        signInOptions: [
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID
+        ],
+        callbacks: {
+        // Avoid redirects after sign-in.
+        signInSuccess: () => false
+        }
+    };
+
+    // Listen to the Firebase Auth state and set the local state.
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged(
+            (user) => this.setState({signedIn: !!user})
+        );
+    }
+
     render() {
         return (
             <div>
                 <Navbar color="faded" light expand="md">
-                    <Link className="navbar-brand" to="/home">
+                    <a className="navbar-brand">
                         SuperProcrastinator
-                    </Link>
+                    </a>
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-                            <NavItem>
-                                <NavLink href="https://github.com/MSkrzypietz/super-procrastinator">Github</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <Link class="nav-link" to="/settings">Settings</Link>
-                            </NavItem>
-                            <NavItem>
-                                <Link class="nav-link" to="/subscriptions">Subscriptions</Link>
-                            </NavItem>
-                            <NavItem>
-                                <Login />
-                            </NavItem>
+                        <Nav className="ml-auto" navbar>                                     
+                                { !this.state.signedIn
+                                    ? <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>                                
+                                    : (
+                                        <div className="my-auto">
+                                            <img height="42" width="42" className="img-fluid rounded-circle mr-3" src={firebase.auth().currentUser.photoURL} alt="userPhoto"/>
+                                            <a className="btn btn-primary text-white" onClick={() => firebase.auth().signOut()}>Sign Out</a>
+                                        </div>
+                                    )
+                                }                                                       
                         </Nav>
                     </Collapse>
                 </Navbar>
             </div>
-        );
+        );        
     }
 }
 
