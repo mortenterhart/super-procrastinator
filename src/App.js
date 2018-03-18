@@ -6,9 +6,6 @@ import MainContent from './components/mainContent/MainContent';
 import Footer from './components/footer/Footer';
 
 import {Provider} from 'react-redux';
-
-import Route from "react-router-dom/es/Route";
-import Redirect from "react-router-dom/es/Redirect";
 import {storage} from "./storage/ReduxStorage";
 
 
@@ -20,15 +17,15 @@ class App extends Component {
     }
 
     extractContextPath() {
-        return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+        return window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2));
     }
 
     render() {
         return (
-            <Provider store={store}>
+            <Provider store={storage}>
                 <div>
                     <NavBar/>
-                    <MainContent/>                    
+                    <MainContent/>
                     <Footer/>
                 </div>
             </Provider>
