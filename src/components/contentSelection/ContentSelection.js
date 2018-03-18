@@ -11,11 +11,13 @@ class ContentSelection extends Component {
     constructor() {
         super();
         this.checkboxList = [
-            new Checkbox(checkboxNames.reddit, "Reddit", false),
-            new Checkbox(checkboxNames.facebook, "Facebook", false),
-            new Checkbox(checkboxNames.twitter, "Twitter", false)
+            <Checkbox key={checkboxNames.reddit} identifier={checkboxNames.reddit} labelName="Reddit" checked={false}/>,
+            <Checkbox key={checkboxNames.golem} identifier={checkboxNames.golem} labelName="Golem" checked={false}/>
         ];
 
+        console.log("Dispatching content selection with array");
+        console.log(this.checkboxList);
+        console.log("Sending ...");
         storage.dispatch(CheckboxActions.initCheckboxList(this.checkboxList));
     }
 
@@ -31,7 +33,7 @@ class ContentSelection extends Component {
                     <Form>
                         <ul className="list-group">
                             {this.checkboxList.map(checkbox => {
-                                return (<li>{checkbox.render()}</li>);
+                                return (<li>{checkbox}</li>);
                             })}
                         </ul>
                     </Form>
