@@ -4,7 +4,6 @@ let initialState = {
     checkboxList: []
 };
 
-
 function updateCheckboxState(state = initialState, action) {
     const checkboxIndex = getCheckboxIndexByIdentifier(state.checkboxList, action.identifier);
 
