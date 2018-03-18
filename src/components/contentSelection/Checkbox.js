@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {FormGroup, Input, Label} from 'reactstrap';
 import './ContentSelection.css';
 import PropTypes from 'prop-types';
+import firebase from 'firebase';
 import {CheckboxActions} from "../../storage/actions/CheckboxActions";
 import {storage} from '../../storage/ReduxStorage';
 import {connect} from "react-redux";
@@ -23,6 +24,8 @@ class Checkbox extends Component {
         } else {
             storage.dispatch(CheckboxActions.selectCheckbox(this.identifier));
         }
+
+        console.log(firebase.auth());
     }
 
     render() {
