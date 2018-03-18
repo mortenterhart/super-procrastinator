@@ -23,7 +23,7 @@ class App extends Component {
     render() {
         return (
             <Provider store={storage}>
-                <div>
+                <div className="background">
                     <NavBar/>
                     <MainContent/>
                     <Footer/>

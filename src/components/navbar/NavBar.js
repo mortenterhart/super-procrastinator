@@ -70,18 +70,18 @@ class NavBar extends Component {
             username: currentUser.displayName,
             email: currentUser.email
         });
-    }
+    } 
 
     render() {
         return (
-            <div>
-                <Navbar color="faded" light expand="md">
+            <div className="navbar-footer-background navbar-border mb-2">
+                <Navbar color="faded" expand="md">
                     <a className="navbar-brand">
                         SuperProcrastinator
                     </a>
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>                                     
+                        <Nav className="ml-auto" navbar>      
                                 { !this.state.signedIn
                                     ? <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>                                
                                     : (

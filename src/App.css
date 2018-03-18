@@ -1,12 +1,28 @@
-.mainContent {
-    height: 800px;
+
+.navbar-footer-background {
+    background-color: #E8E8E8;
 }
 
-.contentSelection {
-    background-color:#778ca3;
+.navbar-border {
+    border-bottom: #4286f4 2px solid;
+}
+
+.footer-border {
+    border-top: #4286f4 2px solid;
+}
+
+.background {
+    background-color: #F5F5F5;
+}
+
+.mainContent {
+    height: 850px;
 }
 
 .contentView {
-    background-color: #26de81;
     overflow-y: scroll;
+}
+
+.myCardPic {
+    border-radius: 5px;
 }

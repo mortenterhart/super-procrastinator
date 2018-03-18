@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Form, Label, Row} from 'reactstrap';
+import {Container, Form, Row} from 'reactstrap';
 import './ContentSelection.css';
 import {checkboxNames} from "../../storage/apis/StorageAPIIdentifiers";
 import Checkbox from "./Checkbox";
@@ -24,12 +24,11 @@ class ContentSelection extends Component {
     render() {
         return (
             <Container className="ContentSelection">
-                <Row className="mb-2">
-                    <Label className="float-left">
-                        <h3>Active Content</h3>
-                    </Label>
-                </Row>
                 <Row>
+                    <h4 >Active Content</h4>
+                </Row>
+                <hr/>
+                <Row> 
                     <Form>
                         <ul className="list-group">
                             {this.checkboxList.map(checkbox => {

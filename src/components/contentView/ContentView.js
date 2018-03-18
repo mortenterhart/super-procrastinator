@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import {
-    Row, Col, Card, CardText, CardBody,
-    CardTitle, CardSubtitle, Button
+    Row, Col, Card, CardBody,
+    CardTitle, Button
 } from 'reactstrap';
 import $ from 'jquery';
 
-import './ContentView.css';
+import golemIcon from '../../res/golemIcon.png';
 
 let DEVKEY = "4ef0b5c4164a4c5be46667df84ba4db8";
 
 // Mit diesem key erhält man die richtigen artikel -> Zugriffslimit ist 500/Tag. Zum testen (ohne LImit) den oberen key verwenden
-// let DEVKEY = "8d44fd1fafc4d2a95b01ffbdb14f02a8";
+//let DEVKEY = "8d44fd1fafc4d2a95b01ffbdb14f02a8";
 
 class ContentView extends Component {
 
@@ -30,8 +30,9 @@ class ContentView extends Component {
                 if (result.success) {
                     let newCards = [];
                     let data = result.data;
-                    for (var i = 0; i < data.length; i++) {
-                        newCards.push(ref.createGolemCard({ id: i, title: data[i].headline, imgUrl: data[i].leadimg.url, imgHeight: data[i].leadimg.height, imgWidth: data[i].leadimg.width}));
+                    console.log(data.url)
+                    for (var i = 0; i < data.length; i++) {   
+                        newCards.push(ref.createGolemCard({ id: i, date: data[i].date, title: data[i].headline, imgUrl: data[i].leadimg.url, imgHeight: data[i].leadimg.height, imgWidth: data[i].leadimg.width, url: data[i].url}));
                     }
                     ref.setState({ cards: newCards });
                 }
@@ -42,13 +43,14 @@ class ContentView extends Component {
     createGolemCard(props) {
         return (
             <Col key={props.id} xs="0" md="4" lg="3" className="mb-3">
-                <Card>
-                    <img className="myCardPic img-fluid rounded-circle" height={props.imgHeight} width={props.imgWidth} src={props.imgUrl} alt="golemCard"/>
+                <Card className="myCard">                    
                     <CardBody>
-                        <CardTitle>{props.title}</CardTitle>
-                        <CardSubtitle>Card subtitle</CardSubtitle>
-                        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                        <Button>Button</Button>
+                        <div>
+                            <img className="d-inline img-fluid" height={props.imgHeight} width={props.imgWidth} src={props.imgUrl} alt="golemCard"/>
+                            <img className="d-inline float-right img-fluid rounded-circle" height="80" width="80" src={golemIcon} alt="golemIcon"/>
+                        </div>
+                        <CardTitle>{props.title}</CardTitle>                    
+                        <Button target="_blank" href={props.url} color="primary" >Erfahre mehr</Button>
                     </CardBody>
                 </Card>
             </Col>
@@ -61,7 +63,7 @@ class ContentView extends Component {
                 <Row>
                     {this.state.cards}
                 </Row>
-            </div>
+            </div>        
         );
     }
 }
