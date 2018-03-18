@@ -64,6 +64,14 @@ class NavBar extends Component {
         );
     }
 
+    test() {
+        let currentUser = firebase.auth().currentUser;
+        firebase.database().ref('users/' + currentUser.uid).set({
+            username: currentUser.displayName,
+            email: currentUser.email
+        });
+    }
+
     render() {
         return (
             <div>
@@ -79,7 +87,7 @@ class NavBar extends Component {
                                     : (
                                         <div className="my-auto">
                                             <img height="42" width="42" className="img-fluid rounded-circle mr-3" src={firebase.auth().currentUser.photoURL} alt="userPhoto"/>
-                                            <a className="btn btn-primary text-white" onClick={() => firebase.auth().signOut()}>Sign Out</a>
+                                            <a className="btn btn-primary text-white" onClick={() => firebase.auth().signOut()}>Sign Out</a>                                            
                                         </div>
                                     )
                                 }                                                       
