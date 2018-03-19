@@ -6,6 +6,10 @@
     list-style-type: none;
 }
 
+.ContentSelection label {
+    margin-bottom: 0;
+}
+
 .ContentSelection h4 {
     font-weight: 400;
     text-align: center;
