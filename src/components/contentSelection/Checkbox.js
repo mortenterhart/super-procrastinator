@@ -30,10 +30,14 @@ class Checkbox extends Component {
             this.setState({checked: true});
         }
 
+        console.log(this.props.identifier);
         const checkboxStates = {
-            reddit: storage.getState().checkboxList.checkboxList[0].checked,
-            golem: storage.getState().checkboxList.checkboxList[1].checked
+            reddit: storage.getState().checkboxList.checkboxList[0].checked !== undefined ? storage.getState().checkboxList.checkboxList[0].checked : false,
+            golem: storage.getState().checkboxList.checkboxList[1].checked !== undefined ? storage.getState().checkboxList.checkboxList[1].checked : false
         };
+
+        console.log("checkboxStates");
+        console.log(checkboxStates);
 
         if (firebase.auth().currentUser) {
             let currentUser = firebase.auth().currentUser;
