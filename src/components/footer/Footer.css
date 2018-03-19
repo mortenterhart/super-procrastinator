@@ -3,3 +3,8 @@
     text-align: center;
     display: inline-block;
 }
+
+.github-logo {
+    opacity: 0.7;
+    margin: 5px;
+}
