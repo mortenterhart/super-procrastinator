@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
 
-import {
-    Navbar,
-    NavbarToggler,
-    Nav,
-    Collapse
-} from 'reactstrap';
+import {Collapse, Nav, Navbar, NavbarToggler} from 'reactstrap';
 
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
@@ -17,8 +12,8 @@ const config = {
     projectId: "superprocrastinator-d826b",
     storageBucket: "superprocrastinator-d826b.appspot.com",
     messagingSenderId: "340186055169"
-  };
-  
+};
+
 firebase.initializeApp(config);
 
 class NavBar extends Component {
@@ -52,8 +47,8 @@ class NavBar extends Component {
             firebase.auth.GoogleAuthProvider.PROVIDER_ID
         ],
         callbacks: {
-        // Avoid redirects after sign-in.
-        signInSuccess: () => false
+            // Avoid redirects after sign-in.
+            signInSuccess: () => false
         }
     };
 
@@ -70,7 +65,7 @@ class NavBar extends Component {
             username: currentUser.displayName,
             email: currentUser.email
         });
-    } 
+    }
 
     render() {
         return (
@@ -81,21 +76,23 @@ class NavBar extends Component {
                     </a>
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>      
-                                { !this.state.signedIn
-                                    ? <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>                                
-                                    : (
-                                        <div className="my-auto">
-                                            <img height="42" width="42" className="img-fluid rounded-circle mr-3" src={firebase.auth().currentUser.photoURL} alt="userPhoto"/>
-                                            <a className="btn btn-primary text-white" onClick={() => firebase.auth().signOut()}>Sign Out</a>                                            
-                                        </div>
-                                    )
-                                }                                                       
+                        <Nav className="ml-auto" navbar>
+                            {!this.state.signedIn
+                                ? <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
+                                : (
+                                    <div className="my-auto">
+                                        <img height="42" width="42" className="img-fluid rounded-circle mr-3"
+                                             src={firebase.auth().currentUser.photoURL} alt="userPhoto"/>
+                                        <a className="btn btn-primary text-white"
+                                           onClick={() => firebase.auth().signOut()}>Sign Out</a>
+                                    </div>
+                                )
+                            }
                         </Nav>
                     </Collapse>
                 </Navbar>
             </div>
-        );        
+        );
     }
 }
 
