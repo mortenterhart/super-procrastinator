@@ -16,63 +16,60 @@ class ContentSelection extends Component {
     }
 
     componentDidMount() {
-        let initialCheckboxState = {
-            reddit: false,
-            golem: false
-        };
-
-        console.log("Firebase:");
-        console.log(firebase.auth());
-
-        console.log("onAuthStateChanged");
         firebase.auth().onAuthStateChanged(
             (user) => {
-                initialCheckboxState = this.loadCheckboxState();
+                if (user) {
+                    this.loadCheckboxStates();
+                } else {
+                    this.checkboxList = [
+                        <Checkbox key={checkboxNames.reddit} identifier={checkboxNames.reddit}
+                                  labelName="Reddit" checked={false}/>,
+                        <Checkbox key={checkboxNames.golem} identifier={checkboxNames.golem}
+                                  labelName="Golem" checked={false}/>
+                    ];
+
+                    console.log("Dispatching content selection with array");
+                    console.log(this.checkboxList);
+                    console.log("Sending ...");
+                    storage.dispatch(CheckboxActions.initCheckboxList(this.checkboxList));
+
+                    this.forceUpdate();
+                }
             }
         );
-
-        console.log(initialCheckboxState);
-
-        this.checkboxList = [
-            <Checkbox key={checkboxNames.reddit} identifier={checkboxNames.reddit}
-                      labelName="Reddit" checked={initialCheckboxState.reddit}/>,
-            <Checkbox key={checkboxNames.golem} identifier={checkboxNames.golem}
-                      labelName="Golem" checked={initialCheckboxState.golem}/>
-        ];
-
-        console.log("Dispatching content selection with array");
-        console.log(this.checkboxList);
-        console.log("Sending ...");
-        storage.dispatch(CheckboxActions.initCheckboxList(this.checkboxList));
-
-        this.forceUpdate();
     }
 
-    loadCheckboxState() {
-        let checkboxStates = {
-            reddit: false,
-            golem: false
-        };
-
+    loadCheckboxStates() {
         if (firebase.auth().currentUser) {
             console.log("Logged in");
             let userId = firebase.auth().currentUser.uid;
+            let ref = this;
             console.log("User UID: " + userId);
             firebase.database().ref('/users/' + userId).once('value').then(function (snapshot) {
                 if (snapshot.val()) {
-                    console.log("Snapshot value is defined");
-                    console.log("reddit: " + snapshot.val().reddit);
-                    console.log("golem: " + snapshot.val().golem);
-                    checkboxStates = {
-                        reddit: snapshot.val().reddit || false,
-                        golem: snapshot.val().golem || false
+                    let checkboxStates = {
+                        reddit: snapshot.val().reddit,
+                        golem: snapshot.val().golem
                     };
+
+                    ref.checkboxList = [
+                        <Checkbox key={checkboxNames.reddit} identifier={checkboxNames.reddit}
+                                  labelName="Reddit" checked={checkboxStates.reddit}/>,
+                        <Checkbox key={checkboxNames.golem} identifier={checkboxNames.golem}
+                                  labelName="Golem" checked={checkboxStates.golem}/>
+                    ];
+
+                    console.log("Dispatching content selection with array");
+                    console.log(ref.checkboxList);
+                    console.log("Sending ...");
+                    storage.dispatch(CheckboxActions.initCheckboxList(ref.checkboxList));
+
+                    ref.forceUpdate();
                 }
             });
         }
-
-        return checkboxStates;
     }
+
 
     render() {
         return (

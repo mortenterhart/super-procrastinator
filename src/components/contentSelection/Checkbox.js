@@ -49,7 +49,8 @@ class Checkbox extends Component {
             <FormGroup check>
                 <Label check>
                     <Input type="checkbox" name={this.props.identifier}
-                           onClick={this.updateCheckboxState} defaultChecked={this.state.checked}/>{' '}
+                           onClick={this.updateCheckboxState} defaultChecked={this.state.checked}
+                           onChange={this.onChange}/>{' '}
                     {this.props.labelName}
                 </Label>
             </FormGroup>
