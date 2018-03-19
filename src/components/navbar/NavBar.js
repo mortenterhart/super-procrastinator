@@ -5,17 +5,6 @@ import {Collapse, Nav, Navbar, NavbarToggler} from 'reactstrap';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
-const config = {
-    apiKey: "AIzaSyDew41OBlxbC6VB8WOgA-d6mDlyJx-mh_E",
-    authDomain: "superprocrastinator-d826b.firebaseapp.com",
-    databaseURL: "https://superprocrastinator-d826b.firebaseio.com",
-    projectId: "superprocrastinator-d826b",
-    storageBucket: "superprocrastinator-d826b.appspot.com",
-    messagingSenderId: "340186055169"
-};
-
-firebase.initializeApp(config);
-
 class NavBar extends Component {
 
     constructor(props) {

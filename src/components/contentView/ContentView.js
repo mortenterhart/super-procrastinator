@@ -52,7 +52,7 @@ class ContentView extends Component {
 
         let checkboxIndex = this.getCheckboxIndexByIdentifier(checkboxList, checkboxNames.golem);
 
-        if (checkboxList[checkboxIndex].props.checked) {
+        if (checkboxList[checkboxIndex].checked) {
             $.getJSON("http://api.golem.de/api/article/latest/?key=" + DEVKEY + "&jsonp=?",
                 function (result) {
                     if (result.success) {
@@ -85,7 +85,7 @@ class ContentView extends Component {
         }
 
         checkboxIndex = this.getCheckboxIndexByIdentifier(checkboxList, checkboxNames.reddit);
-        if (checkboxList[checkboxIndex].props.checked) {
+        if (checkboxList[checkboxIndex].checked) {
             $.getJSON("https://www.reddit.com/r/redditdev/.json",
                 function (result) {
                     if (result) {

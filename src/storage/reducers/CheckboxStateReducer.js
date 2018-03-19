@@ -45,10 +45,7 @@ function copyCheckboxListWithDifferentValue(checkboxList, index, checked) {
         const checkbox = copiedCheckboxList[i];
         if (i === index) {
             copiedCheckboxList[i] = Object.assign({}, checkbox, {
-                props: {
-                    ...checkbox.props,
-                    checked: checked
-                }
+                checked: checked
             });
             break;
         }
