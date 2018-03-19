@@ -11,30 +11,46 @@ class Checkbox extends Component {
 
     constructor(props) {
         super(props);
-        this.identifier = props.identifier;
-        this.labelName = props.labelName;
-        this.checked = props.checked;
+        console.log("Checkbox props");
+        console.log(props);
+
+        this.state = {
+            checked: props.checked
+        };
 
         this.updateCheckboxState = this.updateCheckboxState.bind(this);
     }
 
     updateCheckboxState() {
-        if (this.props.checked) {
-            storage.dispatch(CheckboxActions.deselectCheckbox(this.identifier));
+        if (this.state.checked) {
+            storage.dispatch(CheckboxActions.deselectCheckbox(this.props.identifier));
+            this.setState({checked: false});
         } else {
-            storage.dispatch(CheckboxActions.selectCheckbox(this.identifier));
+            storage.dispatch(CheckboxActions.selectCheckbox(this.props.identifier));
+            this.setState({checked: true});
         }
 
-        console.log(firebase.auth());
+        const checkboxStates = {
+            reddit: storage.getState().checkboxList.checkboxList[0].checked,
+            golem: storage.getState().checkboxList.checkboxList[1].checked
+        };
+
+        if (firebase.auth().currentUser) {
+            let currentUser = firebase.auth().currentUser;
+            firebase.database().ref("/users/" + currentUser.uid).set({
+                reddit: checkboxStates.reddit,
+                golem: checkboxStates.golem
+            });
+        }
     }
 
     render() {
         return (
             <FormGroup check>
                 <Label check>
-                    <Input type="checkbox" name={this.identifier}
-                           onClick={this.updateCheckboxState}/>{' '}
-                    {this.labelName}
+                    <Input type="checkbox" name={this.props.identifier}
+                           onClick={this.updateCheckboxState} defaultChecked={this.state.checked}/>{' '}
+                    {this.props.labelName}
                 </Label>
             </FormGroup>
         );
@@ -44,7 +60,6 @@ class Checkbox extends Component {
 Checkbox.propTypes = {
     identifier: PropTypes.string.isRequired,
     labelName: PropTypes.string.isRequired,
-    checked: PropTypes.bool.isRequired
 };
 
 let getCheckboxIndexByIdentifier = (checkboxList, identifier) => {
@@ -67,8 +82,7 @@ let mapStateToProps = (state, props) => {
         const checkbox = state.checkboxList.checkboxList[checkboxIndex];
         return {
             identifier: checkbox.props.identifier,
-            labelName: checkbox.props.labelName,
-            checked: checkbox.props.checked
+            labelName: checkbox.props.labelName
         };
     }
 
