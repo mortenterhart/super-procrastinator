@@ -44,6 +44,8 @@ class ContentSelection extends Component {
         console.log(this.checkboxList);
         console.log("Sending ...");
         storage.dispatch(CheckboxActions.initCheckboxList(this.checkboxList));
+
+        this.forceUpdate();
     }
 
     loadCheckboxState() {
