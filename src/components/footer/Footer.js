@@ -9,7 +9,7 @@ class Footer extends Component {
                 <a href="https://github.com/MSkrzypietz/super-procrastinator" target="_blank" rel="noopener noreferrer">
                     <img alt="Github Logo" src={githubLogo} className="github-logo" width="30" height="30"/>
                 </a>
-                <a className="d-inline mr-5" href="https://github.com/MSkrzypietz/super-procrastinator" target="_blank" rel="noopener noreferrer">Github</a>
+                <a className="d-inline mr-5" href="https://github.com/mortenterhart/super-procrastinator" target="_blank" rel="noopener noreferrer">Github</a>
                 <p className="d-inline">Copyright &copy; 2018 SuperProcrastinator Inc.</p>
             </div>
         );
