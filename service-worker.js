@@ -1,1 +1,34 @@
-"use strict";var precacheConfig=[["/super-procrastinator/index.html","c53bed10a45f50cb174b389dcf0e856b"],["/super-procrastinator/static/css/main.cf5a3b9a.css","cd9f774815c6906cecd7508c98f95a00"],["/super-procrastinator/static/js/main.d7db930a.js","2e6e8fdc6ea49c15ab5aa0d45d8a8eca"],["/super-procrastinator/static/media/github-logo.b53ff55e.svg","b53ff55e09a092f9f0cbbf74af01b715"],["/super-procrastinator/static/media/golemIcon.cbb9637b.png","cbb9637b2533c12a4bcf97287004ad71"],["/super-procrastinator/static/media/redditIcon.63204bbb.png","63204bbbb6f05395bc2a71a8865ce247"]],cacheName="sw-precache-v3-sw-precache-webpack-plugin-"+(self.registration?self.registration.scope:""),ignoreUrlParametersMatching=[/^utm_/],addDirectoryIndex=function(e,t){var r=new URL(e);return"/"===r.pathname.slice(-1)&&(r.pathname+=t),r.toString()},cleanResponse=function(e){return e.redirected?("body"in e?Promise.resolve(e.body):e.blob()).then(function(t){return new Response(t,{headers:e.headers,status:e.status,statusText:e.statusText})}):Promise.resolve(e)},createCacheKey=function(e,t,r,n){var a=new URL(e);return n&&a.pathname.match(n)||(a.search+=(a.search?"&":"")+encodeURIComponent(t)+"="+encodeURIComponent(r)),a.toString()},isPathWhitelisted=function(e,t){if(0===e.length)return!0;var r=new URL(t).pathname;return e.some(function(e){return r.match(e)})},stripIgnoredUrlParameters=function(e,t){var r=new URL(e);return r.hash="",r.search=r.search.slice(1).split("&").map(function(e){return e.split("=")}).filter(function(e){return t.every(function(t){return!t.test(e[0])})}).map(function(e){return e.join("=")}).join("&"),r.toString()},hashParamName="_sw-precache",urlsToCacheKeys=new Map(precacheConfig.map(function(e){var t=e[0],r=e[1],n=new URL(t,self.location),a=createCacheKey(n,hashParamName,r,/\.\w{8}\./);return[n.toString(),a]}));function setOfCachedUrls(e){return e.keys().then(function(e){return e.map(function(e){return e.url})}).then(function(e){return new Set(e)})}self.addEventListener("install",function(e){e.waitUntil(caches.open(cacheName).then(function(e){return setOfCachedUrls(e).then(function(t){return Promise.all(Array.from(urlsToCacheKeys.values()).map(function(r){if(!t.has(r)){var n=new Request(r,{credentials:"same-origin"});return fetch(n).then(function(t){if(!t.ok)throw new Error("Request for "+r+" returned a response with status "+t.status);return cleanResponse(t).then(function(t){return e.put(r,t)})})}}))})}).then(function(){return self.skipWaiting()}))}),self.addEventListener("activate",function(e){var t=new Set(urlsToCacheKeys.values());e.waitUntil(caches.open(cacheName).then(function(e){return e.keys().then(function(r){return Promise.all(r.map(function(r){if(!t.has(r.url))return e.delete(r)}))})}).then(function(){return self.clients.claim()}))}),self.addEventListener("fetch",function(e){if("GET"===e.request.method){var t,r=stripIgnoredUrlParameters(e.request.url,ignoreUrlParametersMatching),n="index.html";(t=urlsToCacheKeys.has(r))||(r=addDirectoryIndex(r,n),t=urlsToCacheKeys.has(r));var a="/super-procrastinator/index.html";!t&&"navigate"===e.request.mode&&isPathWhitelisted(["^(?!\\/__).*"],e.request.url)&&(r=new URL(a,self.location).toString(),t=urlsToCacheKeys.has(r)),t&&e.respondWith(caches.open(cacheName).then(function(e){return e.match(urlsToCacheKeys.get(r)).then(function(e){if(e)return e;throw Error("The cached response that was expected is missing.")})}).catch(function(t){return console.warn('Couldn\'t serve response for "%s" from cache: %O',e.request.url,t),fetch(e.request)}))}});
+/**
+ * Welcome to your Workbox-powered service worker!
+ *
+ * You'll need to register this file in your web app and you should
+ * disable HTTP caching for this file too.
+ * See https://goo.gl/nhQhGp
+ *
+ * The rest of the code is auto-generated. Please don't update this file
+ * directly; instead, make changes to your Workbox build configuration
+ * and re-run your build process.
+ * See https://goo.gl/2aRDsh
+ */
+
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+
+importScripts(
+  "/super-procrastinator/precache-manifest.e95cfd6656e6bad348c61c957334a404.js"
+);
+
+workbox.clientsClaim();
+
+/**
+ * The workboxSW.precacheAndRoute() method efficiently caches and responds to
+ * requests for URLs in the manifest.
+ * See https://goo.gl/S9QRab
+ */
+self.__precacheManifest = [].concat(self.__precacheManifest || []);
+workbox.precaching.suppressWarnings();
+workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+workbox.routing.registerNavigationRoute("/super-procrastinator/index.html", {
+  
+  blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
+});

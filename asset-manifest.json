@@ -1,9 +1,18 @@
 {
-  "main.css": "static/css/main.cf5a3b9a.css",
-  "main.css.map": "static/css/main.cf5a3b9a.css.map",
-  "main.js": "static/js/main.d7db930a.js",
-  "main.js.map": "static/js/main.d7db930a.js.map",
-  "static/media/github-logo.svg": "static/media/github-logo.b53ff55e.svg",
-  "static/media/golemIcon.png": "static/media/golemIcon.cbb9637b.png",
-  "static/media/redditIcon.png": "static/media/redditIcon.63204bbb.png"
+  "main.css": "/super-procrastinator/static/css/main.6cba2bef.chunk.css",
+  "main.js": "/super-procrastinator/static/js/main.f0d2f8be.chunk.js",
+  "main.js.map": "/super-procrastinator/static/js/main.f0d2f8be.chunk.js.map",
+  "runtime~main.js": "/super-procrastinator/static/js/runtime~main.cad04e4c.js",
+  "runtime~main.js.map": "/super-procrastinator/static/js/runtime~main.cad04e4c.js.map",
+  "static/css/2.c13299a6.chunk.css": "/super-procrastinator/static/css/2.c13299a6.chunk.css",
+  "static/js/2.8db4f591.chunk.js": "/super-procrastinator/static/js/2.8db4f591.chunk.js",
+  "static/js/2.8db4f591.chunk.js.map": "/super-procrastinator/static/js/2.8db4f591.chunk.js.map",
+  "index.html": "/super-procrastinator/index.html",
+  "precache-manifest.e95cfd6656e6bad348c61c957334a404.js": "/super-procrastinator/precache-manifest.e95cfd6656e6bad348c61c957334a404.js",
+  "service-worker.js": "/super-procrastinator/service-worker.js",
+  "static/css/2.c13299a6.chunk.css.map": "/super-procrastinator/static/css/2.c13299a6.chunk.css.map",
+  "static/css/main.6cba2bef.chunk.css.map": "/super-procrastinator/static/css/main.6cba2bef.chunk.css.map",
+  "static/media/github-logo.svg": "/super-procrastinator/static/media/github-logo.b53ff55e.svg",
+  "static/media/golemIcon.png": "/super-procrastinator/static/media/golemIcon.cbb9637b.png",
+  "static/media/redditIcon.png": "/super-procrastinator/static/media/redditIcon.63204bbb.png"
 }
