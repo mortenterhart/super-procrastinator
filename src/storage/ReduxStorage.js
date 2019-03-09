@@ -1,4 +1,4 @@
-import {updateCheckboxState} from './reducers/CheckboxStateReducer';
+import {updateCheckboxState} from "./reducers/CheckboxStateReducer";
 import rootReducer from "../APIs/redditAPI/reducers/rootReducer";
 import ReduxThunk from "redux-thunk";
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
@@ -9,6 +9,8 @@ let combinedReducers = combineReducers({
     redditAPI: rootReducer
 });
 
+// Create the single redux storage by combining the reducers from the checkboxes
+// and from the Reddit API
 let storage = createStore(
     combinedReducers,
     composeEnhancers(applyMiddleware(ReduxThunk))
