@@ -60,7 +60,7 @@ class NavBar extends Component {
         return (
             <div className="navbar-footer-background navbar-border mb-2">
                 <Navbar color="faded" expand="md">
-                    <a className="navbar-brand">
+                    <a className="navbar-brand" href="#title">
                         SuperProcrastinator
                     </a>
                     <NavbarToggler onClick={this.toggle}/>
@@ -72,7 +72,7 @@ class NavBar extends Component {
                                     <div className="my-auto">
                                         <img height="42" width="42" className="img-fluid rounded-circle mr-3"
                                              src={firebase.auth().currentUser.photoURL} alt="userPhoto"/>
-                                        <a className="btn btn-primary text-white"
+                                        <a className="btn btn-primary text-white" href="#signout"
                                            onClick={() => firebase.auth().signOut()}>Sign Out</a>
                                     </div>
                                 )
